@@ -25,7 +25,7 @@ namespace CIT280_Capstone
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/lavish-bootstrap.css"));
         }
     }
 }
