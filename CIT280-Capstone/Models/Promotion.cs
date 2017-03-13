@@ -8,12 +8,11 @@ namespace CIT280_Capstone.Models
 {
     public class Promotion
     {
-        public int PromoId { get; set; }
-        public DateTime DateRecieved { get; set; }
-        public string CFN1 { get; set; }
-        //Customer First Name
-        public string CLN2 { get; set; }
-        //Customer Last Name
+        public int id { get; set; }
+        public DateTime BeginDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public string Description { get; set; }
+
 
     }
 }

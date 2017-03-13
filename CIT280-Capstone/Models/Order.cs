@@ -8,6 +8,6 @@ namespace CIT280_Capstone.Models
 {
     public class Order
     {
-        
+
     }
 }
