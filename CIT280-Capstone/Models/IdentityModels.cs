@@ -29,5 +29,11 @@ namespace CIT280_Capstone.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<CIT280_Capstone.Models.Customer> Customers { get; set; }
+
+        public System.Data.Entity.DbSet<CIT280_Capstone.Models.Order> Orders { get; set; }
+
+        public System.Data.Entity.DbSet<CIT280_Capstone.Models.Promotion> Promotions { get; set; }
     }
 }

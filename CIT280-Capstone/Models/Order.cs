@@ -24,10 +24,9 @@ namespace CIT280_Capstone.Models
             set { _promo = PromoUsed ? value : null; }
         }
 
-        public Order(List<Tuple<string, double>> orderItems, double subTotal)
+        public Order()
         {
-            this.OrderItems = orderItems;
-            this.SubTotal = subTotal;
+            
         }
     }
 }

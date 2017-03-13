@@ -8,7 +8,7 @@ namespace CIT280_Capstone.Models
 {
     public class Customer
     {
-        public int Custid { get; set; }
+        public int ID { get; set; }
         //customer id
         public string CFN { get; set; }
         //customer first name
@@ -20,7 +20,7 @@ namespace CIT280_Capstone.Models
         public int ZipCode { get; set; }
         public int PhoneNumber { get; set; }
         public string email { get; set; }
-        public List<Order> listOfOrders { get; set; }
+        public ICollection<Order> listOfOrders { get; set; }
 
 
     }
