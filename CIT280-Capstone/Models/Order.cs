@@ -12,17 +12,18 @@ namespace CIT280_Capstone.Models
         private Promotion _promo;
 
         public int ID { get; set; }
+        public int CustomerID { get; set; }
+        public int PromotionID { get; set; }
+        public string StrAddress { get; set; }
+        public string City { get; set; }
+        public int ZipCode { get; set; }
         public List<Tuple<string, double>> OrderItems { get; set; }
         public double SubTotal { get; set; }
         public double TaxRate { get { return 1.6d; } }
         public double Tax { get { return SubTotal * TaxRate; } }
         public double Total { get { return SubTotal + Tax; } }
         public bool PromoUsed { get; set; }
-        public Promotion Promo
-        {
-            get { return _promo; }
-            set { _promo = PromoUsed ? value : null; }
-        }
+        
 
         public Order()
         {
