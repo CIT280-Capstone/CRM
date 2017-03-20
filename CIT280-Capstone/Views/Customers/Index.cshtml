@@ -12,25 +12,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CFN)
+            @Html.DisplayNameFor(model => model.FirstName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CLN)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StrAddress)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.City)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ZipCode)
+            @Html.DisplayNameFor(model => model.LastName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.PhoneNumber)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.email)
+            @Html.DisplayNameFor(model => model.TaxExempt)
         </th>
         <th></th>
     </tr>
@@ -38,25 +29,16 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.CFN)
+            @Html.DisplayFor(modelItem => item.FirstName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CLN)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StrAddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.City)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ZipCode)
+            @Html.DisplayFor(modelItem => item.LastName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PhoneNumber)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.email)
+            @Html.DisplayFor(modelItem => item.TaxExempt)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
