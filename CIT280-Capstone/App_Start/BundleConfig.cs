@@ -25,6 +25,7 @@ namespace CIT280_Capstone
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/bootstrap.min.css",
                       "~/Content/Site.css"));
         }
     }
