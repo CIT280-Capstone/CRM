@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace CIT280_Capstone.Models
 {
-    public class Promotion
+    public class LineItem
     {
-        public int id { get; set; }
-        public string Description { get; set; }
-        public DateTime StatrtTime { get; set; }
-        public DateTime EndTime { get; set; }
+        public int ID { get; set; }
+        public Order OrderID { get; set; }
         public Product ProductID { get; set; }
+        public int Quantity { get; set; }
+        public bool IsSubItem { get; set; }
+
     }
 }

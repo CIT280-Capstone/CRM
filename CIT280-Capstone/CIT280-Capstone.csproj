@@ -199,12 +199,35 @@
     <Compile Include="Migrations\201703151227155_initial.Designer.cs">
       <DependentUpon>201703151227155_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703151241541_addresschange.cs" />
+    <Compile Include="Migrations\201703151241541_addresschange.Designer.cs">
+      <DependentUpon>201703151241541_addresschange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703151245290_again.cs" />
+    <Compile Include="Migrations\201703151245290_again.Designer.cs">
+      <DependentUpon>201703151245290_again.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703151251482_onemoretime.cs" />
+    <Compile Include="Migrations\201703151251482_onemoretime.Designer.cs">
+      <DependentUpon>201703151251482_onemoretime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703201244065_NewClasses.cs" />
+    <Compile Include="Migrations\201703201244065_NewClasses.Designer.cs">
+      <DependentUpon>201703201244065_NewClasses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703201251019_lineitems.cs" />
+    <Compile Include="Migrations\201703201251019_lineitems.Designer.cs">
+      <DependentUpon>201703201251019_lineitems.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\LineItem.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Promotion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -297,6 +320,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703151227155_initial.resx">
       <DependentUpon>201703151227155_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703151241541_addresschange.resx">
+      <DependentUpon>201703151241541_addresschange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703151245290_again.resx">
+      <DependentUpon>201703151245290_again.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703151251482_onemoretime.resx">
+      <DependentUpon>201703151251482_onemoretime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703201244065_NewClasses.resx">
+      <DependentUpon>201703201244065_NewClasses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703201251019_lineitems.resx">
+      <DependentUpon>201703201251019_lineitems.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
