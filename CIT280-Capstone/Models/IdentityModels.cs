@@ -35,5 +35,7 @@ namespace CIT280_Capstone.Models
         public System.Data.Entity.DbSet<CIT280_Capstone.Models.Order> Orders { get; set; }
 
         public System.Data.Entity.DbSet<CIT280_Capstone.Models.Promotion> Promotions { get; set; }
+
+        public DbSet<CIT280_Capstone.Models.LineItem> LineItems { get; set; }
     }
 }
