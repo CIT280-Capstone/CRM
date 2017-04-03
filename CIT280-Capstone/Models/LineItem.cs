@@ -12,7 +12,7 @@ namespace CIT280_Capstone.Models
         public Order OrderID { get; set; }
         public Product ProductID { get; set; }
         public int Quantity { get; set; }
-        public bool IsSubItem { get; set; }
+        public LineItem ParentLineItem { get; set; }
 
     }
 }

@@ -181,11 +181,13 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AddressesController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\PromotionsController.cs" />
     <Compile Include="DAL\IRepository.cs" />
     <Compile Include="Global.asax.cs">
@@ -222,6 +224,22 @@
     <Compile Include="Migrations\201703201416342_lineitems1.cs" />
     <Compile Include="Migrations\201703201416342_lineitems1.Designer.cs">
       <DependentUpon>201703201416342_lineitems1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703221226007_test.cs" />
+    <Compile Include="Migrations\201703221226007_test.Designer.cs">
+      <DependentUpon>201703221226007_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703221230288_changeinttostring.cs" />
+    <Compile Include="Migrations\201703221230288_changeinttostring.Designer.cs">
+      <DependentUpon>201703221230288_changeinttostring.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703221238538_ParentLineItems.cs" />
+    <Compile Include="Migrations\201703221238538_ParentLineItems.Designer.cs">
+      <DependentUpon>201703221238538_ParentLineItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703221255302_again1.cs" />
+    <Compile Include="Migrations\201703221255302_again1.Designer.cs">
+      <DependentUpon>201703221255302_again1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -302,6 +320,16 @@
     <Content Include="Views\Orders\Create.cshtml" />
     <Content Include="Views\Orders\Edit.cshtml" />
     <Content Include="Views\Orders\DeleteConfirmed.cshtml" />
+    <Content Include="Views\Addresses\Create.cshtml" />
+    <Content Include="Views\Addresses\Delete.cshtml" />
+    <Content Include="Views\Addresses\Details.cshtml" />
+    <Content Include="Views\Addresses\Edit.cshtml" />
+    <Content Include="Views\Addresses\Index.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -338,6 +366,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703201416342_lineitems1.resx">
       <DependentUpon>201703201416342_lineitems1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703221226007_test.resx">
+      <DependentUpon>201703221226007_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703221230288_changeinttostring.resx">
+      <DependentUpon>201703221230288_changeinttostring.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703221238538_ParentLineItems.resx">
+      <DependentUpon>201703221238538_ParentLineItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703221255302_again1.resx">
+      <DependentUpon>201703221255302_again1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
