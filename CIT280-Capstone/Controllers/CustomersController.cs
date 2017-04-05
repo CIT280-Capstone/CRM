@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CIT280_Capstone.Models;
+using CIT280_Capstone.DAL;
 
 namespace CIT280_Capstone.Controllers
 {
@@ -18,6 +19,41 @@ namespace CIT280_Capstone.Controllers
         public ActionResult Index()
         {
             return View(db.Customers.ToList());
+        }
+
+        public ActionResult Index(string searchCriteria)
+        {
+            {
+                //
+                // instantiate a repository
+                //
+                IRepository breweryRepository = new IRepository();
+
+                //
+                // create a distinct list of cities for the city filter
+                //
+                //IEnumerable<string> cities = ListOfCities();
+
+
+                //
+                // return the data context as an enumerable
+                //
+                IEnumerable<Customer> breweries;
+                using (CustomerRepo)
+                {
+                    breweries = breweryRepository.SelectAll() as IList<Customer>;
+                }
+
+                //
+                // if posted with a search on brewery name
+                //
+                if (searchCriteria != null)
+                {
+                    breweries = breweries.Where(brewery => brewery.FirstName.ToUpper().Contains(searchCriteria.ToUpper()));
+                }
+
+                return View(breweries);
+            }
         }
 
         // GET: Customers/Details/5
