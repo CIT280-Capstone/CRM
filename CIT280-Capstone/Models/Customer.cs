@@ -15,7 +15,7 @@ namespace CIT280_Capstone.Models
         public string FirstName { get; set; }
         [DisplayName("Last Name")]
         public string LastName { get; set; }
-        [DataType(DataType.PhoneNumber)]
+        [Phone]        
         [DisplayName("Phone Number")]
         public string PhoneNumber { get; set; }
         [DisplayName("Delivery Address")]

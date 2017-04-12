@@ -33,7 +33,6 @@ namespace CIT280_Capstone.Controllers
             {
                 return HttpNotFound();
             }
-            Address custAddress = customer.MailingAddress;
             return View(customer);
         }
 
@@ -48,7 +47,7 @@ namespace CIT280_Capstone.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,CFN,CLN,StrAddress,City,ZipCode,PhoneNumber,email")] Customer customer)
+        public ActionResult Create([Bind(Include = "ID,FirstName,LastName,PhoneNumber,TaxExempt")] Customer customer)
         {
             if (ModelState.IsValid)
             {
@@ -80,7 +79,7 @@ namespace CIT280_Capstone.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,CFN,CLN,StrAddress,City,ZipCode,PhoneNumber,email")] Customer customer)
+        public ActionResult Edit([Bind(Include = "ID,FirstName,LastName,PhoneNumber,TaxExempt")] Customer customer)
         {
             if (ModelState.IsValid)
             {
@@ -117,8 +116,6 @@ namespace CIT280_Capstone.Controllers
             return RedirectToAction("Index");
         }
 
-        
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -127,6 +124,5 @@ namespace CIT280_Capstone.Controllers
             }
             base.Dispose(disposing);
         }
-
     }
 }
