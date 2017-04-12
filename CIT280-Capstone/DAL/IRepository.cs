@@ -21,5 +21,6 @@ namespace CIT280_Capstone.DAL
         IEnumerable<Promotion> SelectPromotions();
         Promotion SelectPromotion(int promotionId);
         void EditPromotion(Promotion promotion);
+        IList<Customer> SelectAll();
     }
 }

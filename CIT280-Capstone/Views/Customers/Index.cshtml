@@ -8,6 +8,18 @@
 
 <p>
     @Html.ActionLink("Create New", "Create")
+    <div id="FilterSearch" class="form-horizontal">
+
+        <div class="form-group">
+            @Html.Label("Search by Name", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.TextBox("searchCriteria", null, new { @class = "form-control" })
+        </div>
+
+
+        <div class="form-group">
+            <input type="submit" value="Find Customers" class="btn col-md-2 col-md-offset-2" />
+            <input type="button" value="Reset Customers" onclick="location.href='@Url.Action("Index", "Customers")'" class="btn col-md-2 col-md-offset-2" />
+        </div>
 </p>
 <table class="table">
     <tr>
