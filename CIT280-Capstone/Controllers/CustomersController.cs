@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using CIT280_Capstone.Models;
 using CIT280_Capstone.DAL;
+using PagedList;
 
 namespace CIT280_Capstone.Controllers
 {
@@ -19,6 +20,36 @@ namespace CIT280_Capstone.Controllers
         public ActionResult Index()
         {
             return View(db.Customers.ToList());
+        }
+        [HttpPost]
+        public ViewResult Index(string sortOrder, string searchString)
+        {
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "lastName" : "";
+            ViewBag.DateSortParm = sortOrder == "lastName" ? "firstName" : "phoneNumber";
+            var students = from s in db.Customers
+                           select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                students = students.Where(s => s.LastName.Contains(searchString)
+                                       || s.FirstName.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "lastName":
+                    students = students.OrderByDescending(s => s.LastName);
+                    break;
+                case "firstName":
+                    students = students.OrderBy(s => s.FirstName);
+                    break;
+                case "phoneNumber":
+                    students = students.OrderByDescending(s => s.PhoneNumber);
+                    break;
+                default:
+                    students = students.OrderBy(s => s.DeliveryAddress);
+                    break;
+            }
+
+            return View(students.ToList());
         }
 
         // GET: Customers/Details/5
