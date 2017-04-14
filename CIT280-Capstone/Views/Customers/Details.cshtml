@@ -18,6 +18,10 @@
         </div>    
         @{Html.RenderAction("AddressDetails", "Customers", new { id = Model.ID });}
     </row>
+    <hr />
+    <row>
+        @{ Html.RenderAction("CustomerOrdersList", "Orders", new { id = Model.ID });}
+    </row>
     <p>
         @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
         @Html.ActionLink("Back to List", "Index")

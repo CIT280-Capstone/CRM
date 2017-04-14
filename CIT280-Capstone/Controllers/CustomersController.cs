@@ -17,15 +17,11 @@ namespace CIT280_Capstone.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Customers
-        public ActionResult Index()
-        {
-            return View(db.Customers.ToList());
-        }
-        [HttpPost]
+        
         public ViewResult Index(string sortOrder, string searchString)
         {
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "lastName" : "";
-            ViewBag.DateSortParm = sortOrder == "lastName" ? "firstName" : "phoneNumber";
+            ViewBag.LastNameSortParm = String.IsNullOrEmpty(sortOrder) ? "lastName_desc" : "";
+            ViewBag.NameSortParm = sortOrder == "firstName" ? "firstName_desc" : "firstName";
             var students = from s in db.Customers
                            select s;
             if (!String.IsNullOrEmpty(searchString))
@@ -35,17 +31,17 @@ namespace CIT280_Capstone.Controllers
             }
             switch (sortOrder)
             {
-                case "lastName":
+                case "lastName_desc":
                     students = students.OrderByDescending(s => s.LastName);
                     break;
                 case "firstName":
                     students = students.OrderBy(s => s.FirstName);
                     break;
-                case "phoneNumber":
-                    students = students.OrderByDescending(s => s.PhoneNumber);
+                case "firstName_desc":
+                    students = students.OrderByDescending(s => s.FirstName);
                     break;
                 default:
-                    students = students.OrderBy(s => s.DeliveryAddress);
+                    students = students.OrderBy(s => s.LastName);
                     break;
             }
 
