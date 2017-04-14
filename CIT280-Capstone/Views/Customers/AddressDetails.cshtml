@@ -1,0 +1,23 @@
+﻿@model Tuple<CIT280_Capstone.Models.Address, CIT280_Capstone.Models.Address>
+
+
+
+<div class="col-md-4">
+    <h4>Billing Address</h4>
+    <address>
+        @Html.DisplayFor(model => model.Item1.Street)<br>
+        @Html.DisplayFor(model => model.Item1.City)<br>
+        @Html.DisplayFor(model => model.Item1.State)<br>
+        @Html.DisplayFor(model => model.Item1.ZipCode)<br>
+    </address>
+</div>
+<div class="col-md-4">
+    <h4>Mailing Address</h4>
+    <address>
+        @Html.DisplayFor(model => model.Item2.Street)<br>
+        @Html.DisplayFor(model => model.Item2.City)<br>
+        @Html.DisplayFor(model => model.Item2.State)<br>
+        @Html.DisplayFor(model => model.Item2.ZipCode)<br>
+    </address>
+</div>
+

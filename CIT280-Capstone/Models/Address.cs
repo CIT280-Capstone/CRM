@@ -11,9 +11,13 @@ namespace CIT280_Capstone.Models
     public class Address
     {
         public int ID { get; set; }
+        [Required]
         public string Street { get; set; }
+        [Required]
         public string City { get; set; }
+        [Required]
         public string State { get; set; }
+        [Required]
         [DisplayName("Zip Code")]
         [DataType(DataType.PostalCode)]
         public int ZipCode { get; set; }

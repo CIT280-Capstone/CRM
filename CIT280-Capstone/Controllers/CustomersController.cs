@@ -60,11 +60,30 @@ namespace CIT280_Capstone.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Customer customer = db.Customers.Find(id);
+            
             if (customer == null)
             {
                 return HttpNotFound();
             }
             return View(customer);
+        }
+
+        public ActionResult AddressDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Address delAddress = db.Addresses.Find(db.Customers.Find(id).DeliveryAddressID);
+            Address mailAddress = db.Addresses.Find(db.Customers.Find(id).MailingAddressID);
+
+            if (mailAddress == null || delAddress == null)
+            {
+                return HttpNotFound();
+            }
+            Tuple<Address, Address> addresses = new Tuple<Address, Address>(delAddress, mailAddress);
+
+            return PartialView(addresses);
         }
 
         // GET: Customers/Create

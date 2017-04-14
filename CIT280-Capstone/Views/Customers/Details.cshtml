@@ -4,65 +4,22 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>Customer</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TaxExempt)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TaxExempt)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.DeliveryAddress.Street)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.DeliveryAddress.Street)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.DeliveryAddress.City)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.DeliveryAddress.City)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.DeliveryAddress.State)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.DeliveryAddress.State)
-        </dd>
-
-    </dl>
+<div class="container">
+    <h1>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h1>
+    <row>
+        <div class="col-md-4">
+            <h4>@Html.DisplayNameFor(model => model.PhoneNumber) </h4>
+            @Html.DisplayFor(model => model.PhoneNumber)<br />
+            <h4>@Html.DisplayNameFor(model => model.TaxExempt)</h4>
+            @if (Model.TaxExempt == true)
+            { <p>Exempt</p> }
+            else
+            { <p>Non-Exempt</p>}
+        </div>    
+        @{Html.RenderAction("AddressDetails", "Customers", new { id = Model.ID });}
+    </row>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

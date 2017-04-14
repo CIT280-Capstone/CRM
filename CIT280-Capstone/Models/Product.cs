@@ -11,9 +11,11 @@ namespace CIT280_Capstone.Models
     public class Product
     {
         public int ID { get; set; }
+        [Required]
         public string Name { get; set; }
         [DataType(DataType.Currency)]
         [DisplayName("Unit Price")]
+        [Required]
         public decimal UnitPrice { get; set; }
         public bool IsSubProduct { get; set; }
     }
