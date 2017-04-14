@@ -20,6 +20,34 @@ namespace CIT280_Capstone.Controllers
             return View(db.Orders.ToList());
         }
 
+        public ActionResult CustomerOrdersList(int? id)
+        {
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            List<Order> customerOrders = db.Orders.Where(x => x.CustomerID == id).ToList();
+            if (customerOrders == null)
+                return HttpNotFound();
+            
+            customerOrders.OrderBy(x => x.OrderDate);
+
+            return PartialView(customerOrders);
+        }
+
+        public ActionResult LineItemsPerOrder(int? id)
+        {
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            List<LineItem> lineItems = db.LineItems.Where(x => x.OrderID == id).ToList();
+            if (lineItems == null)
+                return HttpNotFound();
+            foreach (var item in lineItems)
+            {
+                item.Product = db.Products.Find(item.ProductID);
+            }
+            return PartialView(lineItems);
+        }
+
         // GET: Orders/Details/5
         public ActionResult Details(int? id)
         {
