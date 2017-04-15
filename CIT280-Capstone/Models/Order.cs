@@ -10,6 +10,7 @@ namespace CIT280_Capstone.Models
 {
     public class Order
     {
+        [DisplayName("Order ID")]
         public int ID { get; set; }
         public int CustomerID { get; set; }
         [DisplayName("Customer ID")]

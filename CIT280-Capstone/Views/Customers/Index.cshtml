@@ -11,15 +11,7 @@
         @Html.ActionLink("Create New", "Create")
 
     </p>
-    <div class="form-inline form-horizontal">
-        @using (Html.BeginForm()) //scrap this and put it in the layout
-        {
-            <div class="form-group">
-                @Html.TextBox("searchString", null, new { @class = "form-control", @placeholder = "First or Last Name", @id = "searchInput" })
-                <input type="submit" name="Submit" value="Search" class="btn btn-default" />
-            </div>
-        }
-    </div>
+    
 </div>
 <div class="row col-md-8 col-md-offset-2">
     <table class="table" data-page-lenth="10" cellspacing="10">
