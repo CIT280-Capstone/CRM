@@ -65,13 +65,14 @@ body {
     list-style: none;
 }
 
-.sidebar-nav li {
-    text-indent: 20px;
-    line-height: 40px;
+.sidebar-nav li form {
+    margin-left:20px;
 }
 
 .sidebar-nav li a {
     display: block;
+    text-indent: 20px;
+    line-height: 40px;
     text-decoration: none;
     color: #999999;
 }

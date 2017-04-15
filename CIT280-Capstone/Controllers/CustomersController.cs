@@ -93,16 +93,18 @@ namespace CIT280_Capstone.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,FirstName,LastName,PhoneNumber,TaxExempt")] Customer customer)
+        public ActionResult Create(CustomerView customerView)
         {
             if (ModelState.IsValid)
             {
-                db.Customers.Add(customer);
+                db.Customers.Add(customerView.customer);
+                db.Addresses.Add(customerView.deliveryAddress);
+                db.Addresses.Add(customerView.mailingAddress);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(customer);
+            return View(customerView);
         }
 
         // GET: Customers/Edit/5
@@ -125,13 +127,13 @@ namespace CIT280_Capstone.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,FirstName,LastName,PhoneNumber,TaxExempt")] Customer customer)
+        public ActionResult Edit([Bind(Include = "ID,FirstName,LastName,PhoneNumber, DeliveryAddressID, MailingAddressID, TaxExempt")] Customer customer)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(customer).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", customer.ID);
             }
             return View(customer);
         }

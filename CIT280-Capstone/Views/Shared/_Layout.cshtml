@@ -12,46 +12,50 @@
 <body>
     <!--Top Nav Begin-->
     <div id="wrapper" class="toggled">
-        <div class="navbar navbar-inverse navbar-fixed-top" style="border-bottom:none">
+        <div class="navbar navbar-inverse navbar-fixed-top center" style="border-bottom:none">
+
             <div class="container-fluid">
 
                 <!--Nav Collapse Begin-->
-                <div class="navbar-header col-md-2">                   
+                <div class="navbar-header">
+
                     <a href="#menu-toggle" class="btn navbar-btn navbar-link" id="menu-toggle">Hide Menu</a>
+
                 </div>
                 <!--Nav Collapse End-->
 
-                <!--Nav Search Begin-->
-                <div class="navbar-form col-md-6 col-md-offset-4" style="margin-right:50%">
-                    @using (Html.BeginForm()) 
-                    {
-                        <div class="form-group">
-                            @Html.TextBox("searchString", null, new { @class = "form-control", @placeholder = "First or Last Name", @id = "searchInput" })
-                            <input type="submit" name="Submit" value="Search" class="btn navbar-btn" />
-                        </div>
-                    }
-                </div>
-                <!--Nav Search End-->
 
-                <div class="navbar-collapse collapse">
-                    @Html.Partial("_LoginPartial")
-                </div>
+
+                <div class="navbar-collapse collapse">@Html.Partial("_LoginPartial")</div>
+
             </div>
-            
+
         </div>
         <!--Top Nav End-->
-
         <!--Side Nav Begin-->
         <div id="sidebar-wrapper">
+
+            
+            
+
             <ul class="sidebar-nav">
-                <li>@Html.ActionLink("Papano's Pizza", "Index", "Home", new { area = "" }, new { @class = "sidebar-brand" })</li>
-                <li>@Html.ActionLink("Orders", "Index", "Orders")</li>
+                <li class="sidebar-brand">@Html.ActionLink("Papano's Pizza", "Index", "Home", new { area = "" })</li>               
+                <!--Nav Search Begin-->
+                <li>
+                        @using (Html.BeginForm("Index", "Customers", FormMethod.Get, new { @class = "form form-inline"}))
+                        {
+                                <div class="input-group input-group-sm">
+                                    @Html.TextBox("searchString", null, new { @class = "form-control", @placeholder = "Customer Name", @id = "searchInput" })
+                                    <div class="input-group-btn"><button class="btn btn-default btn-sm" type="submit"><span class="glyphicon glyphicon-search"></span></button></div>
+                                </div>
+                        }
+                </li>
+                <!--Nav Search End-->
+                <li></li>
                 <li>@Html.ActionLink("Customers", "Index", "Customers")</li>
-                <li>@Html.ActionLink("Promotions", "Index", "Promotions")</li>
             </ul>
         </div>
         <!--Side Nav End-->
-
         <!--Body Content Begin-->
         <div class="container-fluid body-content" id="page-content-wrapper">
             @RenderBody()
