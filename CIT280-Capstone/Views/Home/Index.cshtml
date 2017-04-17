@@ -1,4 +1,6 @@
-﻿@{
+﻿@model CIT280_Capstone.Models.Customer
+    
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -10,9 +12,11 @@
 <div class="row">
     <div class="col-md-4">
         <h2>Customers</h2>
-        <p>
-            List of recent customers
-        </p>
+        <p> 
+            Table of recent customers
+            </p>
+            @{Html.RenderAction("SmallCustomerDetails", "Customers");
+            }
     </div>
     <div class="col-md-4">
         <h2>Promotions</h2>
