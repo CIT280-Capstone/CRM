@@ -15,31 +15,19 @@
     <!--Top Nav Begin-->
     <div id="wrapper" class="toggled">
         <div class="navbar navbar-inverse navbar-fixed-top center" style="border-bottom:none">
-
             <div class="container-fluid">
-
                 <!--Nav Collapse Begin-->
                 <div class="navbar-header">
-
                     <a href="#menu-toggle" class="btn navbar-btn navbar-link" id="menu-toggle">Hide Menu</a>
-
                 </div>
                 <!--Nav Collapse End-->
-
-
-
                 <div class="navbar-collapse collapse">@Html.Partial("_LoginPartial")</div>
 
             </div>
-
         </div>
         <!--Top Nav End-->
         <!--Side Nav Begin-->
         <div id="sidebar-wrapper">
-
-            
-            
-
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">@Html.ActionLink("Papano's Pizza", "Index", "Home", new { area = "" })</li>               
                 <!--Nav Search Begin-->
@@ -61,10 +49,12 @@
         <!--Body Content Begin-->
         <div class="container-fluid body-content" id="page-content-wrapper">
             @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - Team Spy</p>
-            </footer>
+            <div class="row col-md-12">
+                <hr />
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - Team Spy</p>
+                </footer>
+            </div>
         </div>
         <!--Body Content End-->
 
