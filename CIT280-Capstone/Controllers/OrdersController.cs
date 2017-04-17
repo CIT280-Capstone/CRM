@@ -45,6 +45,8 @@ namespace CIT280_Capstone.Controllers
             {
                 item.Product = db.Products.Find(item.ProductID);
             }
+
+            ViewBag.elementID = id;
             return PartialView(lineItems);
         }
 

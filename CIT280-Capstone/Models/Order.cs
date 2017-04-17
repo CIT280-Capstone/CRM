@@ -19,10 +19,7 @@ namespace CIT280_Capstone.Models
         [DataType(DataType.Date)]
         [Required]
         public DateTime OrderDate { get; set; }
-        [Required]
-        [DisplayName("Delivery?")]
-        public bool IsDelivery { get; set; }
-        public int DeliveryAddressID { get; set; }
+        public int? DeliveryAddressID { get; set; }
         [DisplayName("Delivery Address")]
         public Address DeliveryAddress { get; set; }
     }

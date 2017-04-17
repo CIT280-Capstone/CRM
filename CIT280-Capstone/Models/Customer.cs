@@ -25,7 +25,7 @@ namespace CIT280_Capstone.Models
         [DisplayName("Delivery Address")]
         public Address DeliveryAddress { get; set; }
         public int? MailingAddressID { get; set; }
-        [DisplayName("Billing Address")]
+        [DisplayName("Mailing Address")]
         public Address MailingAddress { get; set; }
         [DisplayName("Tax Exemption Status")]
         public bool TaxExempt { get; set; }

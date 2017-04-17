@@ -93,18 +93,16 @@ namespace CIT280_Capstone.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CustomerView customerView)
+        public ActionResult Create([Bind(Include = "ID,FirstName,LastName,PhoneNumber, DeliveryAddressID, MailingAddressID,TaxExempt")] Customer customer)
         {
             if (ModelState.IsValid)
             {
-                db.Customers.Add(customerView.customer);
-                db.Addresses.Add(customerView.deliveryAddress);
-                db.Addresses.Add(customerView.mailingAddress);
+                db.Customers.Add(customer);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(customerView);
+            return View(customer);
         }
 
         // GET: Customers/Edit/5
