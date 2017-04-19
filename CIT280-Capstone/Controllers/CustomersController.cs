@@ -18,10 +18,19 @@ namespace CIT280_Capstone.Controllers
 
         // GET: Customers
         
-        public ViewResult Index(string sortOrder, string searchString)
+        public ViewResult Index(string sortOrder, string searchString, string filterValue, int? pageNo)
         {
+            ViewBag.CurrentSortOrder = sortOrder;
             ViewBag.LastNameSortParm = String.IsNullOrEmpty(sortOrder) ? "lastName_desc" : "";
             ViewBag.NameSortParm = sortOrder == "firstName" ? "firstName_desc" : "firstName";
+
+            if (searchString != null)
+                pageNo = 1;           
+            else
+                searchString = filterValue;            
+
+            ViewBag.FilterValue = searchString;
+
             var students = from s in db.Customers
                            select s;
             if (!String.IsNullOrEmpty(searchString))
@@ -45,7 +54,9 @@ namespace CIT280_Capstone.Controllers
                     break;
             }
 
-            return View(students.ToList());
+            int sizeOfPage = 15;
+            int numberOfPage = (pageNo ?? 1);
+            return View(students.ToPagedList(numberOfPage, sizeOfPage));
         }
 
         // GET: Customers/Details/5

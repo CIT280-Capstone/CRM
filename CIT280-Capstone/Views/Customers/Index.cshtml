@@ -1,5 +1,6 @@
-﻿@model IEnumerable<CIT280_Capstone.Models.Customer>
-@using PagedList
+﻿@model PagedList.IPagedList<CIT280_Capstone.Models.Customer>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" />
 
 @{
     ViewBag.Title = "Customers";
@@ -14,16 +15,18 @@
     
 </div>
 <div class="row col-md-8 col-md-offset-2">
-    <table class="table" data-page-lenth="10" cellspacing="10">
+    <table class="table table-hover" data-page-lenth="10" cellspacing="10">
         <tr>
 
             <th>
-                @Html.ActionLink(@Html.DisplayNameFor(model => model.LastName).ToString(), "Index", new { sortOrder = ViewBag.LastNameSortParm })
+                @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.LastNameSortParm, filterValue = ViewBag.FilterValue }, new { @class = "h3 navbar-header" })
             </th>
             <th>
-                @Html.ActionLink(@Html.DisplayNameFor(model => model.FirstName).ToString(), "Index", new { sortOrder = ViewBag.NameSortParm })
+                @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.NameSortParm, filterValue = ViewBag.FilterValue }, new { @class = "h3 navbar-header" })
             </th>
-            <th></th>
+            <th>
+                <p class="h3 text-center">Number of Orders</p>
+            </th>
         </tr>
 
         @foreach (var item in Model)
@@ -31,18 +34,23 @@
             <tr>
 
                 <td>
-                    @Html.DisplayFor(modelItem => item.LastName)
+                    @Html.ActionLink(Html.DisplayFor(modelItem => item.LastName).ToString(), "Details", new { id = item.ID }, new { @class = "h4 navbar-text" })
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.FirstName)
+                    @Html.ActionLink(Html.DisplayFor(modelItem => item.FirstName).ToString(), "Details", new { id = item.ID }, new { @class = "h4 navbar-text" })
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    @{ Html.RenderAction("OrderCountPerCustomer", "Orders", new { id = item.ID });}
                 </td>
             </tr>
         }
 
     </table>
+    <br />
+    <div>
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+        @Html.PagedListPager(Model, pageNo => Url.Action("Index", new { pageNo,
+                                                                        sortOrder = ViewBag.CurrentSortOrder,
+                                                                        filterValue = ViewBag.FilterValue }))
+    </div>
 </div>

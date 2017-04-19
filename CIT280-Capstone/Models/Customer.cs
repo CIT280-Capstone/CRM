@@ -20,6 +20,7 @@ namespace CIT280_Capstone.Models
         [DataType(DataType.PhoneNumber)]        
         [DisplayName("Phone Number")]
         [Required]
+        [DisplayFormat(DataFormatString = "{0:###-####}")]
         public string PhoneNumber { get; set; }
         public int? DeliveryAddressID { get; set; }
         [DisplayName("Delivery Address")]
