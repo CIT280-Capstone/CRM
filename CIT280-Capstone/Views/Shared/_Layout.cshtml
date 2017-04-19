@@ -29,7 +29,7 @@
         <!--Side Nav Begin-->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                <li class="sidebar-brand">@Html.ActionLink("Papano's Pizza", "Index", "Home", new { area = "" })</li>               
+                <li class="sidebar-brand">@Html.ActionLink("Papano's Pizza", "Index", "Home")</li>               
                 <!--Nav Search Begin-->
                 <li>
                         @using (Html.BeginForm("Index", "Customers", FormMethod.Get, new { @class = "form form-inline"}))

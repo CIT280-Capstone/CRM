@@ -34,6 +34,18 @@ namespace CIT280_Capstone.Controllers
             return PartialView(customerOrders);
         }
 
+        public ActionResult SmallOrderDetails(int? id)
+        {
+            var latestOrders = db.Orders.ToList().OrderBy(x => x.OrderDate).Take(5);
+
+            foreach (var order in latestOrders)
+            {
+                order.Customer = db.Customers.Find(order.CustomerID);
+
+            }
+            return PartialView(latestOrders);
+        }
+
         public ActionResult LineItemsPerOrder(int? id)
         {
             if (id == null)
