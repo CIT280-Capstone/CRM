@@ -1,22 +1,24 @@
 ﻿@model CIT280_Capstone.Models.Customer
-    
+
 @{
     ViewBag.Title = "Home Page";
 }
 
 <div class="jumbotron">
     <h1>Papano's Pizza</h1>
-    <p class="lead">Insert Calander Thingy Here</p>
+    <p class="lead">
+        20 years of A.Papano's Pizza Perfection.
+    </p>
 </div>
 
 <div class="row">
     <div class="col-md-4">
         <h2>Customers</h2>
-        <p> 
+        <p>
             Table of recent customers
-            </p>
-            @{Html.RenderAction("SmallCustomerDetails", "Customers");
-            }
+        </p>
+        @{Html.RenderAction("SmallCustomerDetails", "Customers");
+        }
     </div>
     <div class="col-md-4">
         <h2>Promotions</h2>
@@ -74,10 +76,16 @@
             <li>30</li>
             <li>31</li>
         </ul>
-           
-        </div>
+
+    </div>
     <div class="col-md-4">
         <h2>Orders</h2>
         <p>Recent orders here</p>
+        <p>
+            To View a Customer's Order:<br />
+            Please Click All Customers then Click on a Customer's Details.
+        </p>
+        @{Html.RenderAction("SmallOrderDetails", "Orders");
+        }
     </div>
 </div>

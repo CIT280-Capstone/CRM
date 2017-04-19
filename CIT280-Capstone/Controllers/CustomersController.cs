@@ -76,7 +76,7 @@ namespace CIT280_Capstone.Controllers
         }
         public ActionResult SmallCustomerDetails()
         {
-            var latestOrders = db.Orders.ToList().OrderBy(x => x.OrderDate);
+            var latestOrders = db.Orders.ToList().OrderBy(x => x.OrderDate).Take(5);
 
             List<Customer> customers = new List<Customer>();
             foreach (var order in latestOrders)
@@ -84,6 +84,17 @@ namespace CIT280_Capstone.Controllers
                 customers.Add(db.Customers.Find(order.CustomerID));
             }
             return PartialView(customers);
+        }
+        public ActionResult SmallOrderDetails()
+        {
+            var latestOrders = db.Orders.ToList().OrderBy(x => x.Customer).Take(5);
+
+            List<Order> orders = new List<Order>();
+            foreach (var order in latestOrders)
+            {
+                orders.Add(db.Orders.Find(order.ID));
+            }
+            return PartialView(orders);
         }
 
         public ActionResult AddressDetails(int? id)

@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<CIT280_Capstone.Models.Customer>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("All Customers", "Index", "Customers")
 </p>
 <table class="table">
     <tr>
@@ -15,14 +15,12 @@
         <th>
             @Html.DisplayNameFor(model => model.PhoneNumber)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TaxExempt)
-        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+
         <td>
             @Html.DisplayFor(modelItem => item.FirstName)
         </td>
@@ -32,9 +30,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.PhoneNumber)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TaxExempt)
-        </td>
+
     </tr>
 }
 
