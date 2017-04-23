@@ -1,34 +1,31 @@
 ﻿@model IEnumerable<CIT280_Capstone.Models.Customer>
 
-<p>
-    @Html.ActionLink("All Customers", "Index", "Customers")
-</p>
-<table class="table">
+
+<table class="table table-hover">
     <tr>
 
-        <th>
+        <th class="table-header">
             @Html.DisplayNameFor(model => model.FirstName)
         </th>
-        <th>
+        <th class="table-header">
             @Html.DisplayNameFor(model => model.LastName)
         </th>
-        <th>
+        <th class="table-header">
             @Html.DisplayNameFor(model => model.PhoneNumber)
         </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
 
         <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
+            @Html.ActionLink(Html.DisplayFor(modelItem => item.FirstName).ToString(), "Details", "Customers", new { id = item.ID}, new { @class="table-link" })
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.LastName)
+            @Html.ActionLink(@Html.DisplayFor(modelItem => item.LastName).ToString(), "Details", "Customers", new { id = item.ID }, new { @class = "table-link" })
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PhoneNumber)
+            @Html.ActionLink(@HtmlHelpers.DisplayForPhone(item.PhoneNumber), "Details", "Customers", new { id = item.ID }, new { @class = "table-link" })
         </td>
 
     </tr>

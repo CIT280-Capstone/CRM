@@ -4,18 +4,18 @@
     ViewBag.Title = "Details";
 }
 
-<div class="container">
+<div class="col-md-10 col-md-offset-2">
     <h1>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h1>
     <row>
         <div class="col-md-4">
             <h4>@Html.DisplayNameFor(model => model.PhoneNumber) </h4>
-            @Html.DisplayFor(model => model.PhoneNumber)<br />
+            @HtmlHelpers.DisplayForPhone(Model.PhoneNumber)<br />
             <h4>@Html.DisplayNameFor(model => model.TaxExempt)</h4>
             @if (Model.TaxExempt == true)
             { <p>Exempt</p> }
             else
             { <p>Non-Exempt</p>}
-        </div>    
+        </div>
         @{Html.RenderAction("AddressDetails", "Customers", new { id = Model.ID });}
     </row>
     <p>
@@ -23,8 +23,9 @@
         @Html.ActionLink("Back to List", "Index")
     </p>
     <hr />
-    <row>
-        @{ Html.RenderAction("CustomerOrdersList", "Orders", new { id = Model.ID });}
-    </row>
-    
 </div>
+
+
+@{ Html.RenderAction("CustomerOrdersList", "Orders", new { id = Model.ID });}
+
+

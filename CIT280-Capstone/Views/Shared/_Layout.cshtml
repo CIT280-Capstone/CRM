@@ -13,12 +13,12 @@
 </head>
 <body>
     <!--Top Nav Begin-->
-    <div id="wrapper" class="toggled">
+    <div id="wrapper" class="">
         <div class="navbar navbar-inverse navbar-fixed-top center" style="border-bottom:none">
             <div class="container-fluid">
                 <!--Nav Collapse Begin-->
                 <div class="navbar-header">
-                    <a href="#menu-toggle" class="btn navbar-btn navbar-link" id="menu-toggle">Hide Menu</a>
+                    <a href="#menu-toggle" class="btn navbar-btn navbar-link" id="menu-toggle">Menu</a>
                 </div>
                 <!--Nav Collapse End-->
                 <div class="navbar-collapse collapse">@Html.Partial("_LoginPartial")</div>
@@ -30,19 +30,10 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">@Html.ActionLink("Papano's Pizza", "Index", "Home")</li>               
-                <!--Nav Search Begin-->
-                <li>
-                        @using (Html.BeginForm("Index", "Customers", FormMethod.Get, new { @class = "form form-inline"}))
-                        {
-                                <div class="input-group input-group-sm">
-                                    @Html.TextBox("searchString", null, new { @class = "form-control", @placeholder = "Customer Name", @id = "searchInput" })
-                                    <div class="input-group-btn"><button class="btn btn-default btn-sm" type="submit"><span class="glyphicon glyphicon-search"></span></button></div>
-                                </div>
-                        }
-                </li>
-                <!--Nav Search End-->
-                <li></li>
-                <li>@Html.ActionLink("Customers", "Index", "Customers")</li>
+                <!--Nav Search Begin-->               
+                <li>@Html.ActionLink("View Customers", "Index", "Customers")</li>
+                <li>@Html.ActionLink("Search For Customer", "Index", "Customers")</li>
+                <li>@Html.ActionLink("Add Customer", "Create", "Customers")</li>
             </ul>
         </div>
         <!--Side Nav End-->

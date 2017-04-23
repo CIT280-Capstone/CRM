@@ -7,50 +7,65 @@
 }
 <div class="row col-mid-10 col-md-offset-1">
     <h2>Customers</h2>
-
-    <p>
-        @Html.ActionLink("Create New", "Create")
-
-    </p>
-    
 </div>
-<div class="row col-md-8 col-md-offset-2">
+<div class="col-md-8 col-md-offset-3">
+    @using (Html.BeginForm("Index", "Customers", FormMethod.Get, new { @class = "form form-inline" }))
+            {
+        <div class="input-group input-group-lg search-bar">
+            @Html.TextBox("searchString", null, new { @class = "form-control", @placeholder = "Search", @id = "searchInput" })
+            <div class="input-group-btn"><button class="btn btn-default btn-lg" type="submit"><span class="glyphicon glyphicon-search"></span></button></div>
+        </div>
+    }
+</div>
+
+<div class="row col-md-10 col-md-offset-1">
     <table class="table table-hover" data-page-lenth="10" cellspacing="10">
-        <tr>
-
-            <th>
-                @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.LastNameSortParm, filterValue = ViewBag.FilterValue }, new { @class = "h3 navbar-header" })
-            </th>
-            <th>
-                @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.NameSortParm, filterValue = ViewBag.FilterValue }, new { @class = "h3 navbar-header" })
-            </th>
-            <th>
-                <p class="h3 text-center">Number of Orders</p>
-            </th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
+        <thead>
             <tr>
 
-                <td>
-                    @Html.ActionLink(Html.DisplayFor(modelItem => item.LastName).ToString(), "Details", new { id = item.ID }, new { @class = "h4 navbar-text" })
-                </td>
-                <td>
-                    @Html.ActionLink(Html.DisplayFor(modelItem => item.FirstName).ToString(), "Details", new { id = item.ID }, new { @class = "h4 navbar-text" })
-                </td>
-                <td>
-                    @{ Html.RenderAction("OrderCountPerCustomer", "Orders", new { id = item.ID });}
-                </td>
+                <th class="table-header">
+                    @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.LastNameSortParm, filterValue = ViewBag.FilterValue }, new { @class = "h3" })
+                </th>
+                <th class="table-header">
+                    @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.NameSortParm, filterValue = ViewBag.FilterValue }, new { @class = "h3" })
+                </th>
+                <th class="table-header">
+                    <h3>Phone Number</h3>
+                </th>
+                <th class="table-header">
+                    <h3>Number of Orders</h3>
+                </th>
             </tr>
-        }
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
 
+                    <td>
+                        @Html.ActionLink(Html.DisplayFor(modelItem => item.LastName).ToString(), "Details", new { id = item.ID }, new { @class = "table-link" })
+                    </td>
+                    <td>
+                        @Html.ActionLink(Html.DisplayFor(modelItem => item.FirstName).ToString(), "Details", new { id = item.ID }, new { @class = "table-link" })
+                    </td>
+                    <td>
+                        @Html.ActionLink(HtmlHelpers.DisplayForPhone(item.PhoneNumber), "Details", new { id = item.ID }, new { @class = "table-link" })
+                    </td>
+                    <td>
+                        @{ Html.RenderAction("OrderCountPerCustomer", "Orders", new { id = item.ID });}
+                    </td>
+                </tr>
+                            }
+        </tbody>
     </table>
     <br />
     <div>
         Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-        @Html.PagedListPager(Model, pageNo => Url.Action("Index", new { pageNo,
-                                                                        sortOrder = ViewBag.CurrentSortOrder,
-                                                                        filterValue = ViewBag.FilterValue }))
+        @Html.PagedListPager(Model, pageNo => Url.Action("Index", new
+   {
+       pageNo,
+       sortOrder = ViewBag.CurrentSortOrder,
+       filterValue = ViewBag.FilterValue
+   }))
     </div>
 </div>

@@ -61,7 +61,7 @@ namespace CIT280_Capstone.Controllers
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             ViewBag.OrderCount = db.Orders.Where(x => x.CustomerID == id).Count();
-
+            ViewBag.CustomerID = id;
             return PartialView();
         }
 

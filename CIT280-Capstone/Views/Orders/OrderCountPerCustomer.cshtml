@@ -1,1 +1,2 @@
-﻿<h4 class="text-center">@ViewBag.OrderCount</h4>
+﻿
+@Html.ActionLink($"{ViewBag.OrderCount}", "Details", new { id = ViewBag.CustomerID }, new { @class = "table-link" })

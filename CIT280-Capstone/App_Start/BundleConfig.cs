@@ -23,9 +23,9 @@ namespace CIT280_Capstone
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/Site.css",
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap.min.css",
+                      "~/Content/Site.css",
                       "~/Content/simple-sidebar.css"));
         }
     }

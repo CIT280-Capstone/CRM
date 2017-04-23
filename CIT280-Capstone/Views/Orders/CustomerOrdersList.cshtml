@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<CIT280_Capstone.Models.Order>
-<div class="col-md-8 col-md-offset-2">
+<div class="col-md-6 col-md-offset-3">
     <table class="table table-hover">
         <thead>
             <tr>
-                <th class="col-md-6">
+                <th class="table-header">
                     @Html.DisplayNameFor(model => model.ID)
                 </th>
-                <th class="col-md-3">
+                <th class="table-header">
                     @Html.DisplayNameFor(model => model.OrderDate)
                 </th>
-                <th>
+                <th class="table-header">
                     Delivery
                 </th>
             </tr>
@@ -31,7 +31,7 @@
                     </td>
                 </tr>
                 <tr >
-                    <td class="collapse well" id="subItems@(item.ID)" colspan="3">
+                    <td class="collapse" id="subItems@(item.ID)" colspan="3">
                         @{Html.RenderAction("LineItemsPerOrder", "Orders", new { id = item.ID });}
                     </td>
                 </tr>
