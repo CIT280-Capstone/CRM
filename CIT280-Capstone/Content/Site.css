@@ -73,3 +73,20 @@ table tr td a {
 .table tbody tr:hover td{
     background-color: rgb(221,221,221);
 }
+
+.address-link a {
+    vertical-align: middle !important;
+    text-align: center !important;
+    text-decoration: none !important;
+}
+
+.CustomerEdit{
+    display:none;
+    position:absolute;
+    top:10%;
+    bottom:90%;
+    left:75%;
+}
+.CustomerInfo:hover .CustomerEdit{
+    display: block;
+}

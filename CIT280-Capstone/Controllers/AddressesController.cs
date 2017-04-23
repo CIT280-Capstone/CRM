@@ -36,8 +36,9 @@ namespace CIT280_Capstone.Controllers
         }
 
         // GET: Addresses/Create
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
+            ViewBag.CustID = id;
             return View();
         }
 
@@ -46,16 +47,29 @@ namespace CIT280_Capstone.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Street,City,State,ZipCode")] Address address)
+        public ActionResult CreateDelivery([Bind(Include = "ID,Street,City,State,ZipCode")] Address address, int CustID)
         {
             if (ModelState.IsValid)
             {
                 db.Addresses.Add(address);
+                db.Customers.Find(CustID).DeliveryAddressID = address.ID;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "Customers", new { id = CustID });
             }
-
-            return View(address);
+            return RedirectToAction("Details", "Customers", new { id = CustID });
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateMailing([Bind(Include = "ID,Street,City,State,ZipCode")] Address address, int CustID)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Addresses.Add(address);
+                db.Customers.Find(CustID).DeliveryAddressID = address.ID;
+                db.SaveChanges();
+                return RedirectToAction("Details", "Customers", new { id = CustID });
+            }
+            return RedirectToAction("Details", "Customers", new { id = CustID });
         }
 
         // GET: Addresses/Edit/5

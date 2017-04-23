@@ -20,6 +20,6 @@ namespace CIT280_Capstone.Models
         [Required]
         [DisplayName("Zip Code")]
         [DataType(DataType.PostalCode)]
-        public int ZipCode { get; set; }
+        public string ZipCode { get; set; }
     }
 }

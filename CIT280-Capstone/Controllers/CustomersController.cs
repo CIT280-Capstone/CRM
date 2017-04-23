@@ -67,7 +67,10 @@ namespace CIT280_Capstone.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Customer customer = db.Customers.Find(id);
-            
+            if (customer.MailingAddressID != null)
+                customer.MailingAddress = db.Addresses.Find(customer.MailingAddressID);
+            if (customer.DeliveryAddressID != null)
+                customer.DeliveryAddress = db.Addresses.Find(customer.DeliveryAddressID);
             if (customer == null)
             {
                 return HttpNotFound();
@@ -97,24 +100,6 @@ namespace CIT280_Capstone.Controllers
             return PartialView(orders);
         }
 
-        public ActionResult AddressDetails(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Address delAddress = db.Addresses.Find(db.Customers.Find(id).DeliveryAddressID);
-            Address mailAddress = db.Addresses.Find(db.Customers.Find(id).MailingAddressID);
-
-            if (mailAddress == null || delAddress == null)
-            {
-                return HttpNotFound();
-            }
-            Tuple<Address, Address> addresses = new Tuple<Address, Address>(delAddress, mailAddress);
-
-            return PartialView(addresses);
-        }
-
         // GET: Customers/Create
         public ActionResult Create()
         {
@@ -126,13 +111,21 @@ namespace CIT280_Capstone.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,FirstName,LastName,PhoneNumber, DeliveryAddressID, MailingAddressID,TaxExempt")] Customer customer)
+        public ActionResult Create(Customer customer)
         {
             if (ModelState.IsValid)
             {
+                if (customer.DeliveryAddress.City != null)
+                {
+                    db.Addresses.Add(customer.DeliveryAddress);
+                }
+                if (customer.MailingAddress.City != null)
+                {
+                    db.Addresses.Add(customer.MailingAddress);
+                }
                 db.Customers.Add(customer);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { id = customer.ID });
             }
 
             return View(customer);

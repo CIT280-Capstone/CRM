@@ -7,7 +7,7 @@
 <div class="col-md-10 col-md-offset-2">
     <h1>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h1>
     <row>
-        <div class="col-md-4">
+        <div class="col-md-4 CustomerInfo">
             <h4>@Html.DisplayNameFor(model => model.PhoneNumber) </h4>
             @HtmlHelpers.DisplayForPhone(Model.PhoneNumber)<br />
             <h4>@Html.DisplayNameFor(model => model.TaxExempt)</h4>
@@ -15,13 +15,51 @@
             { <p>Exempt</p> }
             else
             { <p>Non-Exempt</p>}
+            <a href="/Customers/Edit/@Model.ID"><span class="glyphicon glyphicon-pencil CustomerEdit"></span></a>
         </div>
-        @{Html.RenderAction("AddressDetails", "Customers", new { id = Model.ID });}
+        @if (Model.DeliveryAddressID == null)
+            {
+            <div class="col-md-4">
+                @Html.ActionLink("Add Delivery Address", "CreateDelivery", "Addresses", new { id = Model.ID }, new { @class = "address-link" });
+            </div>
+        }
+
+        else
+        {
+            <div class="col-md-4">
+                <h4>Delivery Address</h4>
+                <address>
+                    @Html.DisplayFor(model => model.DeliveryAddress.Street)<br>
+                    @Html.DisplayFor(model => model.DeliveryAddress.City)<br>
+                    @Html.DisplayFor(model => model.DeliveryAddress.State)<br>
+                    @Html.DisplayFor(model => model.DeliveryAddress.ZipCode)<br>
+                </address>
+            </div>
+        }
+
+        @if (Model.MailingAddressID == null)
+            {
+            <div class="col-md-4">
+
+                @Html.ActionLink("Add Mailing Address", "CreateMailing", "Addresses", new { id = Model.ID }, new { @class = "address-link" });
+            </div>
+        }
+        else
+        {
+            <div class="col-md-4">
+
+                <h4>Mailing Address</h4>
+                <address>
+                    @Html.DisplayFor(model => model.MailingAddress.Street)<br>
+                    @Html.DisplayFor(model => model.MailingAddress.City)<br>
+                    @Html.DisplayFor(model => model.MailingAddress.State)<br>
+                    @Html.DisplayFor(model => model.MailingAddress.ZipCode)<br>
+                </address>
+            </div>
+        }
+
     </row>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
+
     <hr />
 </div>
 
