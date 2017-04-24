@@ -22,6 +22,8 @@ namespace CIT280_Capstone.Models
         [Required]
         [DisplayFormat(DataFormatString = "{0:###-####}")]
         public string PhoneNumber { get; set; }
+        [EmailAddress]
+        public string Email { get; set; }
         public int? DeliveryAddressID { get; set; }
         [DisplayName("Delivery Address")]
         public Address DeliveryAddress { get; set; }

@@ -10,107 +10,107 @@ using CIT280_Capstone.Models;
 
 namespace CIT280_Capstone.Controllers
 {
-    public class PromotionsController : Controller
+    public class MailingListsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Promotions
+        // GET: MailingLists
         public ActionResult Index()
         {
-            return View(db.Promotions.ToList());
+            return View(db.MailingLists.ToList());
         }
 
-        // GET: Promotions/Details/5
+        // GET: MailingLists/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Promotion promotion = db.Promotions.Find(id);
-            if (promotion == null)
+            MailingList mailingList = db.MailingLists.Find(id);
+            if (mailingList == null)
             {
                 return HttpNotFound();
             }
-            return View(promotion);
+            return View(mailingList);
         }
 
-        // GET: Promotions/Create
+        // GET: MailingLists/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Promotions/Create
+        // POST: MailingLists/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,BeginDate,EndDate,Description")] Promotion promotion)
+        public ActionResult Create([Bind(Include = "ID,Name,Description")] MailingList mailingList)
         {
             if (ModelState.IsValid)
             {
-                db.Promotions.Add(promotion);
+                db.MailingLists.Add(mailingList);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(promotion);
+            return View(mailingList);
         }
 
-        // GET: Promotions/Edit/5
+        // GET: MailingLists/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Promotion promotion = db.Promotions.Find(id);
-            if (promotion == null)
+            MailingList mailingList = db.MailingLists.Find(id);
+            if (mailingList == null)
             {
                 return HttpNotFound();
             }
-            return View(promotion);
+            return View(mailingList);
         }
 
-        // POST: Promotions/Edit/5
+        // POST: MailingLists/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,BeginDate,EndDate,Description")] Promotion promotion)
+        public ActionResult Edit([Bind(Include = "ID,Name,Description")] MailingList mailingList)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(promotion).State = EntityState.Modified;
+                db.Entry(mailingList).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(promotion);
+            return View(mailingList);
         }
 
-        // GET: Promotions/Delete/5
+        // GET: MailingLists/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Promotion promotion = db.Promotions.Find(id);
-            if (promotion == null)
+            MailingList mailingList = db.MailingLists.Find(id);
+            if (mailingList == null)
             {
                 return HttpNotFound();
             }
-            return View(promotion);
+            return View(mailingList);
         }
 
-        // POST: Promotions/Delete/5
+        // POST: MailingLists/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Promotion promotion = db.Promotions.Find(id);
-            db.Promotions.Remove(promotion);
+            MailingList mailingList = db.MailingLists.Find(id);
+            db.MailingLists.Remove(mailingList);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

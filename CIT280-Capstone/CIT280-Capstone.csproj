@@ -192,10 +192,10 @@
     <Compile Include="Controllers\AddressesController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MailingListsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
-    <Compile Include="Controllers\PromotionsController.cs" />
     <Compile Include="DAL\IRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -281,16 +281,20 @@
     <Compile Include="Migrations\201704232259001_postalcode.Designer.cs">
       <DependentUpon>201704232259001_postalcode.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704240023163_mailinglist.cs" />
+    <Compile Include="Migrations\201704240023163_mailinglist.Designer.cs">
+      <DependentUpon>201704240023163_mailinglist.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LineItem.cs" />
+    <Compile Include="Models\MailingList.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\Promotion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -372,6 +376,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\MailingLists\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -441,6 +446,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704232259001_postalcode.resx">
       <DependentUpon>201704232259001_postalcode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704240023163_mailinglist.resx">
+      <DependentUpon>201704240023163_mailinglist.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
