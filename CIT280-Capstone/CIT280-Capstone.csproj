@@ -285,6 +285,10 @@
     <Compile Include="Migrations\201704240023163_mailinglist.Designer.cs">
       <DependentUpon>201704240023163_mailinglist.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704240152538_new.cs" />
+    <Compile Include="Migrations\201704240152538_new.Designer.cs">
+      <DependentUpon>201704240152538_new.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -373,10 +377,11 @@
     <Content Include="Views\Addresses\CreateMailing.cshtml" />
     <Content Include="Views\Addresses\CreateDelivery.cshtml" />
     <Content Include="Views\Addresses\DeleteMailing.cshtml" />
+    <Content Include="Views\MailingLists\Create.cshtml" />
+    <Content Include="Views\MailingLists\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\MailingLists\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -449,6 +454,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704240023163_mailinglist.resx">
       <DependentUpon>201704240023163_mailinglist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704240152538_new.resx">
+      <DependentUpon>201704240152538_new.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

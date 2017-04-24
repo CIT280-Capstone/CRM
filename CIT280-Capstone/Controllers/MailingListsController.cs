@@ -28,11 +28,23 @@ namespace CIT280_Capstone.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             MailingList mailingList = db.MailingLists.Find(id);
+            db.Entry(mailingList).Collection(x => x.Customers).Load();
             if (mailingList == null)
             {
                 return HttpNotFound();
             }
             return View(mailingList);
+        }
+        public ActionResult AddToList(int id, int custID)
+        {
+            var list = db.MailingLists.Find(id);
+            db.Entry(list).Collection(x => x.Customers).Load();
+            var customer = db.Customers.Find(custID);
+            list.Customers.Add(customer);
+            db.Entry(list).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return RedirectToAction("Details", "Customers", new { id = custID });
         }
 
         // GET: MailingLists/Create
@@ -52,7 +64,7 @@ namespace CIT280_Capstone.Controllers
             {
                 db.MailingLists.Add(mailingList);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create");
             }
 
             return View(mailingList);
