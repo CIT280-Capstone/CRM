@@ -12,32 +12,21 @@
     <meta name="description" content="Main Page" />
 </head>
 <body>
-    <!--Top Nav Begin-->
-    <div id="wrapper" class="">
+    <div id="wrapper" class="toggled">
         <div class="navbar navbar-inverse navbar-fixed-top center" style="border-bottom:none">
             <div class="container-fluid">
-                <!--Nav Collapse Begin-->
                 <div class="navbar-header">
-                    <a href="#menu-toggle" class="btn navbar-btn navbar-link" id="menu-toggle">Menu</a>
+                    @Html.ActionLink("Papano's Pizza", "Index", "Home", new { }, new { @class = "navbar-brand" })
                 </div>
-                <!--Nav Collapse End-->
-                <div class="navbar-collapse collapse">@Html.Partial("_LoginPartial")</div>
-
             </div>
         </div>
-        <!--Top Nav End-->
-        <!--Side Nav Begin-->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                <li class="sidebar-brand">@Html.ActionLink("Papano's Pizza", "Index", "Home")</li>               
-                <!--Nav Search Begin-->               
                 <li>@Html.ActionLink("View Customers", "Index", "Customers")</li>
                 <li>@Html.ActionLink("Search For Customer", "Index", "Customers")</li>
                 <li>@Html.ActionLink("Add Customer", "Create", "Customers")</li>
             </ul>
         </div>
-        <!--Side Nav End-->
-        <!--Body Content Begin-->
         <div class="container-fluid body-content" id="page-content-wrapper">
             @RenderBody()
             <div class="row col-md-12">
@@ -47,7 +36,6 @@
                 </footer>
             </div>
         </div>
-        <!--Body Content End-->
 
 
         @Scripts.Render("~/bundles/jquery")

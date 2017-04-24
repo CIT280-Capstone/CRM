@@ -7,7 +7,7 @@
 <div class="col-md-10 col-md-offset-2">
     <h1>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h1>
     <row>
-        <div class="col-md-4 CustomerInfo">
+        <div class="col-md-4 edit-icon-trigger">
             <h4>@Html.DisplayNameFor(model => model.PhoneNumber) </h4>
             @HtmlHelpers.DisplayForPhone(Model.PhoneNumber)<br />
             <h4>@Html.DisplayNameFor(model => model.TaxExempt)</h4>
@@ -15,7 +15,7 @@
             { <p>Exempt</p> }
             else
             { <p>Non-Exempt</p>}
-            <a href="/Customers/Edit/@Model.ID"><span class="glyphicon glyphicon-pencil CustomerEdit"></span></a>
+            <a href="/Customers/Edit/@Model.ID"><span class="glyphicon glyphicon-pencil edit-icon"></span></a>
         </div>
         @if (Model.DeliveryAddressID == null)
             {
@@ -26,7 +26,7 @@
 
         else
         {
-            <div class="col-md-4">
+            <div class="col-md-4 edit-icon-trigger">
                 <h4>Delivery Address</h4>
                 <address>
                     @Html.DisplayFor(model => model.DeliveryAddress.Street)<br>
@@ -34,19 +34,20 @@
                     @Html.DisplayFor(model => model.DeliveryAddress.State)<br>
                     @Html.DisplayFor(model => model.DeliveryAddress.ZipCode)<br>
                 </address>
+                <a href="~/Addresses/Edit/@Model.DeliveryAddressID?CustID=@Model.ID"><span class="glyphicon glyphicon-pencil edit-icon"></span></a>
+                <a href="~/Addresses/DeleteDelivery/@Model.DeliveryAddressID?CustID=@Model.ID"><span class="glyphicon glyphicon-remove delete-icon"></span></a>
             </div>
         }
 
         @if (Model.MailingAddressID == null)
             {
             <div class="col-md-4">
-
-                @Html.ActionLink("Add Mailing Address", "CreateMailing", "Addresses", new { id = Model.ID }, new { @class = "address-link" });
+                @Html.ActionLink("Add Mailing Address", "CreateMailing", "Addresses", new { id = Model.ID }, new { @class = "address-link" })
             </div>
         }
         else
         {
-            <div class="col-md-4">
+            <div class="col-md-4 edit-icon-trigger">
 
                 <h4>Mailing Address</h4>
                 <address>
@@ -55,6 +56,8 @@
                     @Html.DisplayFor(model => model.MailingAddress.State)<br>
                     @Html.DisplayFor(model => model.MailingAddress.ZipCode)<br>
                 </address>
+                <a href="~/Addresses/Edit/@Model.MailingAddressID?CustID=@Model.ID"><span class="glyphicon glyphicon-pencil edit-icon"></span></a>
+                <a href="~/Addresses/DeleteMailing/@Model.MailingAddressID?CustID=@Model.ID"><span class="glyphicon glyphicon-remove delete-icon"></span></a>
             </div>
         }
 

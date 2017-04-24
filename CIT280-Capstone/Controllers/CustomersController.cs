@@ -115,14 +115,6 @@ namespace CIT280_Capstone.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (customer.DeliveryAddress.City != null)
-                {
-                    db.Addresses.Add(customer.DeliveryAddress);
-                }
-                if (customer.MailingAddress.City != null)
-                {
-                    db.Addresses.Add(customer.MailingAddress);
-                }
                 db.Customers.Add(customer);
                 db.SaveChanges();
                 return RedirectToAction("Details", new { id = customer.ID });

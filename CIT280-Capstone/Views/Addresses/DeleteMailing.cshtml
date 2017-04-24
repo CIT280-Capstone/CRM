@@ -1,0 +1,59 @@
+﻿@model CIT280_Capstone.Models.Address
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="col-md-8 col-md-offset-2">
+    <h3>Are you sure you want to delete this address?</h3>
+    <hr />
+</div>
+<div class="col-md-6 col-md-offset-3 well">
+    <h4>Mailing Address</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Street)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Street)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.State)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ZipCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ZipCode)
+        </dd>
+
+    </dl>
+    <input readonly hidden type="text" data-val="true" name="CustID" id="CustID" value="@ViewBag.CustID" />
+    <hr />
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            @Html.ActionLink("Cancle", "Details", "Customers", new { id = ViewBag.CustID }, new { @class = "btn btn-default" }) |
+            <input type="submit" value="Delete" class="btn btn-default" />
+        </div>
+    }
+</div>

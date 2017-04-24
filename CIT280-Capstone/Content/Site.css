@@ -80,13 +80,22 @@ table tr td a {
     text-decoration: none !important;
 }
 
-.CustomerEdit{
-    display:none;
-    position:absolute;
-    top:10%;
-    bottom:90%;
-    left:75%;
+.edit-icon {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    left:50%;
 }
-.CustomerInfo:hover .CustomerEdit{
+.delete-icon {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    left: 55%;
+} 
+.edit-icon-trigger:hover .edit-icon {
     display: block;
 }
+.edit-icon-trigger:hover .delete-icon {
+    display: block;
+}
+

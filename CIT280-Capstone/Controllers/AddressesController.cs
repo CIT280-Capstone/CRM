@@ -36,7 +36,12 @@ namespace CIT280_Capstone.Controllers
         }
 
         // GET: Addresses/Create
-        public ActionResult Create(int id)
+        public ActionResult CreateDelivery(int id)
+        {
+            ViewBag.CustID = id;
+            return View();
+        }
+        public ActionResult CreateMailing(int id)
         {
             ViewBag.CustID = id;
             return View();
@@ -65,7 +70,7 @@ namespace CIT280_Capstone.Controllers
             if (ModelState.IsValid)
             {
                 db.Addresses.Add(address);
-                db.Customers.Find(CustID).DeliveryAddressID = address.ID;
+                db.Customers.Find(CustID).MailingAddressID = address.ID;
                 db.SaveChanges();
                 return RedirectToAction("Details", "Customers", new { id = CustID });
             }
@@ -73,8 +78,9 @@ namespace CIT280_Capstone.Controllers
         }
 
         // GET: Addresses/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? id, int custID)
         {
+            ViewBag.custID = custID;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -92,20 +98,37 @@ namespace CIT280_Capstone.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Street,City,State,ZipCode")] Address address)
+        public ActionResult Edit([Bind(Include = "ID,Street,City,State,ZipCode")] Address address, int CustID)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(address).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "Customers", new { id = CustID });
             }
-            return View(address);
+            return RedirectToAction("Details", "Customers", new { id = CustID });
         }
 
         // GET: Addresses/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult DeleteDelivery(int? id, int CustID)
         {
+            ViewBag.custID = CustID;
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Address address = db.Addresses.Find(id);
+            if (address == null)
+            {
+                return HttpNotFound();
+            }
+            return View(address);
+        }
+        public ActionResult DeleteMailing(int? id, int CustID)
+        {
+            ViewBag.custID = CustID;
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -119,14 +142,26 @@ namespace CIT280_Capstone.Controllers
         }
 
         // POST: Addresses/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("DeleteDelivery")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteDeliveryConfirmed(int id, int CustID)
         {
             Address address = db.Addresses.Find(id);
             db.Addresses.Remove(address);
+            db.Customers.Find(CustID).DeliveryAddressID = null;
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Details", "Customers", new { id = CustID });
+        }
+
+        [HttpPost, ActionName("DeleteMailing")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteMailingConfirmed(int id, int CustID)
+        {
+            Address address = db.Addresses.Find(id);
+            db.Addresses.Remove(address);
+            db.Customers.Find(CustID).MailingAddressID = null;
+            db.SaveChanges();
+            return RedirectToAction("Details", "Customers", new { id = CustID });
         }
 
         protected override void Dispose(bool disposing)
